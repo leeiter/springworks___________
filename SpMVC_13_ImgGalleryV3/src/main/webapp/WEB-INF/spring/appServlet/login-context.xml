@@ -9,6 +9,8 @@
 		
 	<!-- AuthInterceptor class의 preHandler가 수행할 규칙을 지정 -->
 	<bean id="auth" class="com.biz.gallery.interceptor.AuthInterceptor"/>
+	<bean id="upload" class="com.biz.gallery.interceptor.UploadInterceptor"/>
+	<bean id="ajax" class="com.biz.gallery.interceptor.AjaxInterceptor"/>
 	
 	<!-- 
 		AuthInterceptor 클래스의 preHandler method가 관리할
@@ -17,13 +19,24 @@
 	 -->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/image/upload*"/>
-			<mvc:mapping path="/image/update**/**"/>
-			<mvc:mapping path="/rest/upload*"/>
-			<mvc:mapping path="/image/delete*"/>
+			<mvc:mapping path="/image/upload"/>
+			<mvc:mapping path="/image/update/*"/>
+			<ref bean="upload"/>
+		</mvc:interceptor>
+		
+		<mvc:interceptor>
+			<mvc:mapping path="/image/delete"/>
+			<ref bean="ajax"/>
+		</mvc:interceptor>
+	
+		<mvc:interceptor>
+			<mvc:mapping path="/image/upload"/>
+			<mvc:mapping path="/image/update"/>
+			<mvc:mapping path="/rest/upload"/>
+			<mvc:mapping path="/image/delete"/>
 				
-			<mvc:exclude-mapping path="/member*"/>
-			<mvc:exclude-mapping path="/rest/login*"/>
+			<mvc:exclude-mapping path="/member"/>
+			<mvc:exclude-mapping path="/rest/login"/>
 				
 			<ref bean="auth"/>
 		</mvc:interceptor>

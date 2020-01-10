@@ -104,7 +104,7 @@ $(function() {
 		
 	})
 	
-	$("btn-login").click(function() {
+	$("#btn-login").click(function() {
 		
 		// 유효성 검사
 		// id, password가 입력되지 않았을 때 경고
@@ -160,6 +160,6 @@ $(function() {
 	</c:if>
 	<input type="text" id="u_id" name="u_id" placeholder="사용자 ID">
 	<input type="password" id="u_password" name="u_password" placeholder="비밀번호">
-	<button type="submit" id="btn-login">로그인</button>
+	<button type="button" id="btn-login">로그인</button>
 	<button type="button" id="btn-join">회원가입</button>
 </form>

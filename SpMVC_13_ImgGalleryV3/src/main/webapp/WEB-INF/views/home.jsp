@@ -254,8 +254,12 @@ $(function() {
 						else
 							document.location.replace("${rootPath}/")
 					},
-					error : function() {
-						alert("서버 통신 오류")
+					error : function(error) {
+						if(error.status == 403) {
+							alert("삭제 권한이 없습니다")
+							return false;
+						}
+						
 					}
 					
 				})

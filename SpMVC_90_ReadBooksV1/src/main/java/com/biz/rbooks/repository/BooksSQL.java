@@ -33,5 +33,31 @@ public class BooksSQL {
 	
 	}
 	
+	
+	public String update_sql() {
+		
+		return new SQL() {{
+			
+			UPDATE("tbl_books");
+			
+			WHERE("b_code = #{b_code, jdbcType = VARCHAR}");
+			
+			SET("b_name = #{b_name, jdbcType = VARCHAR}");
+			SET("b_comp = #{b_comp, jdbcType = VARCHAR}");
+			SET("b_auther = #{b_auther, jdbcType = VARCHAR}");
+			SET("b_trans = #{b_trans, jdbcType = VARCHAR}");
+			SET("b_page = #{b_page, jdbcType = VARCHAR}");
+			SET("b_year = #{b_year, jdbcType = VARCHAR}");
+			SET("b_iprice = #{b_iprice, jdbcType = VARCHAR}");
+
+			
+		}}.toString();
+		
+		
+		
+		
+	}
+	
+	
 
 }

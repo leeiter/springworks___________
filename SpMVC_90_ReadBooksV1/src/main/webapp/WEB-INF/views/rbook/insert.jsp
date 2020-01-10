@@ -74,16 +74,20 @@ legend {
 <%@ include file="/WEB-INF/views/include/include-header.jsp" %>
 
 <fieldset>
-	<legend>도서 등록</legend>
-	<form:form modelAttribute="bsDTO"  autocomplete="on"  class="book-form">		
-		<form:input type="hidden" path="b_code"  class="in-box" placeholder="도서 코드"  /><br/>
-		<form:input path="b_name"  class="in-box" placeholder="도서명"  /><br/>
-		<form:input path="b_comp" class="in-box" placeholder="출판사"  /><br/>
-		<form:input path="b_auther"  class="in-box" placeholder="저자"  /><br/>
-		<form:input path="b_trans"  class="in-box" placeholder="역자"  /><br/>
-		<form:input path="b_page"  class="in-box" placeholder="페이지"  /><br/>
-		<form:input path="b_year"  class="in-box" placeholder="구입연도"  /><br/>
-		<form:input path="b_iprice"  class="in-box" placeholder="구입가격"  /><br/>
+	<legend>독서록 등록</legend>
+	<form:form modelAttribute="rbDTO"  autocomplete="on"  class="rbook-form">
+	
+			
+		<form:input type="hidden" path="rb_seq"  class="in-box" placeholder="일련번호"  /><br/>
+		
+		<form:input path="rb_bcode"  class="in-box" placeholder="도서코드"  /><br/>
+		<form:input path="rb_date" class="in-box" placeholder="독서일자"  /><br/>
+		<form:input path="rb_stime"  class="in-box" placeholder="독서시작시각"  /><br/>
+		<form:input path="rb_rtime"  class="in-box" placeholder="독서시간"  /><br/>
+		<form:input path="rb_subject"  class="in-box" placeholder="한줄소감"  /><br/>
+		<form:textarea path="rb_text"  class="in-box" placeholder="긴줄소감"  /><br/>
+
+		<input id="rb_star" type="number" value='<c:out value="${rbDTO.rb_star}" default="1" />' min="1" max="5" name="rb_star">
 		<button class="bz-button">저장</button>
 	</form:form>
 </fieldset>
