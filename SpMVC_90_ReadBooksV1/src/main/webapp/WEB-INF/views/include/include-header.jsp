@@ -40,6 +40,18 @@ li:last-child {
 	<ul>
 		<li><a href="${rootPath}/">홈</a></li>
 		<li><a href="${rootPath}/books/list">도서정보</a></li>
-		<li><a href="#">로그인</a></li>
+		
+		<c:choose>
+			<c:when test="${mDTO.m_id == null}">
+				<li><a href ="${rootPath}/member/login">로그인</a></li>
+			</c:when>
+			<c:otherwise>
+				<c:forEach items="${mDTO}" var="member">
+					<li><a href ="${rootPath}/member/logout">${member.m_id}</a></li>
+				</c:forEach>
+			</c:otherwise>
+		</c:choose>
 	</ul>
 </nav>
+
+

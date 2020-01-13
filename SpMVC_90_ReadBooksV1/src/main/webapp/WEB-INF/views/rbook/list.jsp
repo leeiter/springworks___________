@@ -90,61 +90,7 @@ $(function() {
             let rb_seq = $(this).attr("data-id")
             document.location.href = "${rootPath}/rbook/view?rb_seq=" + rb_seq
 		})
-/*	
-	var contextCallBack = function(key, options) {
-		
-		if(key == 'edit') {
 			
-			let b_code = $(this).attr("data-id");
-			document.location.href = "${rootPath}/books/update/" + b_code
-			alert("수정 클릭" + $(this).attr("data-id"))
-		}
-			
-		if(key == 'delete') {
-			if(confirm("도서정보를 삭제할까요?")) {
-				let b_code = $(this).attr("data-id");
-				
-				$.ajax({
-					
-					url : "${rootPath}/books/delete",
-					data : {b_code : b_code},
-					type : 'POST',
-					success : function(result) {
-						if(result < 1)
-							alert("삭제도중 문제 발생")
-						else
-							document.location.replace("${rootPath}/books/list")
-					},
-					error : function() {
-						alert("서버 통신 오류")
-					}
-					
-				})
-				
-	
-				return false;
-			}
-
-
-	}
-
-		
-	}
-
-	
-	$.contextMenu({
-		
-		selector : '.booklist',
-		callback : contextCallBack,
-		items : {
-			'edit' : {name : '수정', icon : 'edit'},
-			'delete' : {name : '삭제', icon : 'delete'}
-		}
-		
-	})
-	
-	*/
-	
 })
 
 </script>
@@ -160,7 +106,7 @@ $(function() {
 		<th>도서코드</th>
 		<th>독서일자</th>
 		<th>독서시작시각</th>
-		<th>독서시간</th>
+		<th>독서시간(분)</th>
 		<th>한줄소감</th>
 		<th>긴줄소감</th>
 		<th>독서느낌(별점)</th>
@@ -191,10 +137,6 @@ $(function() {
 <section>
 	<button id="btn_rbooks_up" class="bz-button">도서 리스트 보기</button>
 </section>
-
-
-
-
 
 </body>
 </html>

@@ -11,11 +11,10 @@ public interface MemberDao {
 	public int memberCount();
 	
 	@Select("SELECT * FROM tbl_member WHERE m_id = #{m_id}")
-	public MemberDTO findById(String u_id);
+	public MemberDTO findById(String m_id);
 	
 	@Insert("INSERT INTO tbl_member (m_id, m_password, m_login_date, m_rem) "
 			+ "VALUES(#{m_id}, #{m_password}, #{m_login_date, jdbcType=VARCHAR}, #{m_rem, jdbcType=VARCHAR})")
 	public int insert(MemberDTO mDTO);
-	
 
 }

@@ -1,7 +1,5 @@
 package com.biz.rbooks.service;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +29,6 @@ public class BooksService {
 	public int insert(BooksDTO bsDTO) {
 		
 		// 9791162540480
-		
 		String b_code = bsDao.getMaxBCode();
 		String b_prefixCode = "97911";
 		
@@ -79,7 +76,7 @@ public class BooksService {
 		
 		BooksDTO bsDTO = bsDao.findByBCode(b_code);
 		return bsDTO;
-		
-		
+
 	}
+	
 }

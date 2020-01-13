@@ -8,7 +8,7 @@ import com.biz.rbooks.repository.MemberDao;
 
 @Service
 public class MemberService {
-	
+
 	private final MemberDao mDao;
 	
 	@Autowired
@@ -32,9 +32,9 @@ public class MemberService {
 		if(loginMemberDTO != null) {
 			return loginMemberDTO;
 		}
-		
-		// TODO Auto-generated method stub
+
 		return null;
 	}
+	
 
 }

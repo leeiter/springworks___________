@@ -31,7 +31,5 @@ public interface BooksDao {
 	
 	@Delete("DELETE FROM tbl_books WHERE b_code = #{b_code}")
 	public int delete(String b_code);
-	
-	
 
 }

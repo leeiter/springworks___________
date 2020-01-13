@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,24 +19,29 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.rbooks.domain.BooksDTO;
+import com.biz.rbooks.domain.MemberDTO;
 import com.biz.rbooks.domain.ReadBookDTO;
 import com.biz.rbooks.service.BooksService;
 import com.biz.rbooks.service.ReadBookService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@SessionAttributes({"rbDTO", "bsDTO"})
+//컨트롤러 메소드가 생성하는 모델 정보 중에서 @SessionAttributes에 지정한 이름과 동일한 이름이 있다면 이를 세션에 저장해준다.
+@SessionAttributes({"rbDTO", "bsDTO", "mDTO"})
 @Slf4j
+//컨트롤러를 선택, 메서드 단위까지 선택 가능
 @RequestMapping(value = "/rbook")
 @Controller
 public class ReadBookController {
 	
+	// 다른 빈을 찾아 빈 간의 의존성을 자동으로 만족시키도록 하는 수단
 	@Autowired
 	ReadBookService rbService;
 	
 	@Autowired
 	BooksService bsService;
 	
+	// @ModelAttribute에 붙은 객체가 자동으로 Model 객체에 추가되고 .jsp까지 전달
 	@ModelAttribute("rbDTO")
 	public ReadBookDTO newReadBookDTO() {
 		
@@ -47,8 +54,11 @@ public class ReadBookController {
 		return new BooksDTO();
 	}
 	
-	
-	
+	@ModelAttribute("bsDTO")
+	public MemberDTO newMemberDTO() {
+		return new MemberDTO();
+	}
+
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public String list(Model model) {
 		List<ReadBookDTO> rbList = rbService.selectAll();
@@ -62,11 +72,18 @@ public class ReadBookController {
 		model.addAttribute("rbDTO", rbDTO);
 		return "rbook/view";
 	}
-	
+		
 	@RequestMapping(value = "/insert/{b_code}", method = RequestMethod.GET)
-	public String insert(@ModelAttribute("rbDTO") ReadBookDTO rbDTO, Model model, @PathVariable("b_code") String b_code) {
+	public String insert(@ModelAttribute("rbDTO") ReadBookDTO rbDTO, Model model, @PathVariable("b_code") String b_code, HttpSession httpSession) {
 
 		rbDTO = new ReadBookDTO();
+		
+		MemberDTO mDTO = (MemberDTO) httpSession.getAttribute("mDTO");
+		
+		if(mDTO == null) {
+
+			return "redirect:/member/login";
+		}
 		
 		rbDTO.setRb_bcode(b_code);
 		
@@ -91,11 +108,7 @@ public class ReadBookController {
 		return "redirect:/rbook/list";
 		
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping(value = "/update/{rb_seq}", method = RequestMethod.GET)
 	public String update(@PathVariable("rb_seq") long rb_seq, Model model) {
 		
@@ -103,7 +116,6 @@ public class ReadBookController {
 		model.addAttribute("rbDTO", rbDTO);
 		
 		return "rbook/insert";
-		
 
 	}
 	
@@ -137,16 +149,6 @@ public class ReadBookController {
 		status.setComplete();
 		return ret + "";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }

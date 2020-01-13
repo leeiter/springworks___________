@@ -53,12 +53,9 @@ public class ReadBookSQL {
 			
 			
 		}}.toString();
-		
-		
-		
+
 		
 	}
-	
-	
+
 
 }
