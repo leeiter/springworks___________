@@ -1,5 +1,6 @@
 package com.biz.rbooks.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -33,6 +34,26 @@ public class BookService {
 		bookVO.setB_auther("홍길동");
 		
 		bookDao.insert(bookVO);		
+	}
+
+	public List<BookVO> findByBNames(String strText) {
+		/*
+		 * strText를 빈칸으로 분해해서 문자열 배열을 만들고
+		 * 그 배열을 List<String>  형으로 변환한 다음
+		 * names Lists에 담아라
+		 */
+		List<String> names = Arrays.asList(strText.split(" "));
+		
+		List<BookVO> bookList = bookDao.findByBNames(names);
+		// TODO Auto-generated method stub
+		return bookList;
+	}
+
+	public BookVO findByBCode(String b_code) {
+		BookVO bookVO = bookDao.findByBCode(b_code);
+		
+		// TODO Auto-generated method stub
+		return bookVO;
 	}
 
 }
