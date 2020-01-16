@@ -54,12 +54,15 @@ $(function() {
 	margin-right: 0;
 }
 
+.input_text {
+	height: 250px;
+	overflow: scroll;
+}
+
 
 .btn_input {
-
 	margin-top: 30px;
 	margin-right: 170px;
-
 }
 
 
@@ -108,8 +111,8 @@ $(function() {
 			</div>
 					
 			<div class="input_box">
-			<p class="p_box">긴줄소감</p>
-			<form:textarea path="rb_text"  class="input_box_form"/>
+			<p class="p_box ">긴줄소감</p>
+			<form:textarea path="rb_text" class="input_box_form input_text"/>
 			</div>
 			
 			<div id="main-button">
