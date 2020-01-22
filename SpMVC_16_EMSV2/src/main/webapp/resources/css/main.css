@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: S-CoreDream-6Bold;
+}
+
+@font-face {
+	font-family: 'S-CoreDream-6Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-6Bold.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	height: 100%;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+h2 {
+	text-align: center;
+	margin: 50px 0;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.main-menu {
+	display: flex;
+	flex-flow: row;
+	flex-wrap: wrap;
+	background-color: rgb(2, 122, 214);
+}
+
+.main-menu li {
+	display: inline-block;
+	white-space: nowrap;
+	border-bottom: 3px solid transparent;
+	cursor: pointer;
+	color: white;
+	text-align: center;
+	width: 130px;
+	padding: 11px 0;
+}
+
+.main-menu li:nth-child(4) {
+	margin-left: auto;
+}
+
+li:hover {
+	background-color: black;
+	border-bottom: 3px solid transparent
+}
