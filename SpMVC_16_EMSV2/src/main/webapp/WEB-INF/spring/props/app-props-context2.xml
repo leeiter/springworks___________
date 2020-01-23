@@ -13,10 +13,10 @@
 		<context:property-placeholder/> 사용하게 되면
 		jaspty-context.xml이 작동이 안될 가능성도 있다.
 	-->
-	<context:property-placeholder/>
+	<context:property-placeholder location="/WEB-INF/spring/props/myproject.properties, classpath:/my.res.properties" />
 	
 	<!-- 암호화 -->
-	<util:properties id="app_props" location="/WEB-INF/spring/myproject.properties" />
+	<util:properties id="app_props" location="/WEB-INF/spring/props/myproject.properties" />
 	
 	<!--
 		classpath:
