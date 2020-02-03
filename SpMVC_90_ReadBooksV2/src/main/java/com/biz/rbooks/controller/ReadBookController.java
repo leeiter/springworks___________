@@ -26,14 +26,14 @@ import com.biz.rbooks.service.ReadBookService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
+//컨트롤러 메소드가 생성하는 모델 정보 중에서 @SessionAttributes에 지정한 이름과 동일한 이름이 있다면 이를 세션에 저장해준다.
 @SessionAttributes({"rbDTO", "bsDTO", "mDTO"})
+@Slf4j
+//컨트롤러를 선택, 메서드 단위까지 선택 가능
 @RequestMapping(value = "/rbook")
 @Controller
 public class ReadBookController {
 	
-	
-	/*
 	// 다른 빈을 찾아 빈 간의 의존성을 자동으로 만족시키도록 하는 수단
 	@Autowired
 	ReadBookService rbService;
@@ -150,5 +150,5 @@ public class ReadBookController {
 		return ret + "";
 	}
 	
-*/
+
 }

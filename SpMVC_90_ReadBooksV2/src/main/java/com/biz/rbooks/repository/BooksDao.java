@@ -14,9 +14,6 @@ import com.biz.rbooks.domain.BooksDTO;
 
 public interface BooksDao {
 	
-	
-	
-	/*
 	@Select("SELECT * FROM tbl_books")
 	public List<BooksDTO> selectAll();
 	
@@ -34,7 +31,5 @@ public interface BooksDao {
 	
 	@Delete("DELETE FROM tbl_books WHERE b_code = #{b_code}")
 	public int delete(String b_code);
-	
-	*/
 
 }

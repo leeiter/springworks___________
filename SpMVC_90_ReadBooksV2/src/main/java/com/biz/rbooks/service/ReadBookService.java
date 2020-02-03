@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ReadBookService {
 	
-	/*
 	private final ReadBookDao rbDao;
 	
 	@Autowired
@@ -49,7 +48,5 @@ public class ReadBookService {
 		return rbDao.delete(rb_seq);
 		
 	}
-	
-	*/
 
 }

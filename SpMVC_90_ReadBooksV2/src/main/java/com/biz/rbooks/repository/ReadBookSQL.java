@@ -28,9 +28,12 @@ public class ReadBookSQL {
 			INTO_VALUES("#{rb_text, jdbcType=VARCHAR}");
 			INTO_VALUES("#{rb_star, jdbcType=VARCHAR}");
 
+			
 		}}.toString();
 		
+	
 	}
+	
 	
 	public String update_sql() {
 		
@@ -48,8 +51,11 @@ public class ReadBookSQL {
 			SET("rb_text = #{rb_text, jdbcType=VARCHAR}");
 			SET("rb_star = #{rb_star, jdbcType=VARCHAR}");
 			
+			
 		}}.toString();
 
+		
 	}
+
 
 }

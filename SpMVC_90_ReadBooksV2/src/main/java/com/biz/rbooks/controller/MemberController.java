@@ -17,14 +17,12 @@ import com.biz.rbooks.service.MemberService;
 
 import lombok.extern.slf4j.Slf4j;
 
-
-@Slf4j
 @SessionAttributes({"mDTO"})
+@Slf4j
 @RequestMapping(value = "/member")
 @Controller
 public class MemberController {
 	
-	/*
 	@Autowired
 	MemberService mService;
 	
@@ -70,7 +68,5 @@ public class MemberController {
 		httpSession.removeAttribute("mDTO");
 		return "redirect:/rbook/list";
 	}
-	
-	*/
 
 }

@@ -6,13 +6,8 @@ import org.springframework.stereotype.Service;
 import com.biz.rbooks.domain.MemberDTO;
 import com.biz.rbooks.repository.MemberDao;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 @Service
 public class MemberService {
-	
-	/*
 
 	private final MemberDao mDao;
 	
@@ -41,5 +36,5 @@ public class MemberService {
 		return null;
 	}
 	
-*/
+
 }

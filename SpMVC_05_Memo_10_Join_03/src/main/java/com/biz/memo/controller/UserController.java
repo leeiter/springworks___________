@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.biz.memo.domain.UserDTO;
 import com.biz.memo.persistence.UserDao;
-import com.biz.memo.service.UserService;
+import com.biz.rbooks.remark.UserService;
 
 @RequestMapping(value = "/user")
 @Controller

@@ -14,8 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class BooksService {
 	
-	/*
-	
 	private final BooksDao bsDao;
 
 	@Autowired
@@ -81,5 +79,4 @@ public class BooksService {
 
 	}
 	
-	*/
 }

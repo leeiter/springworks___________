@@ -30,7 +30,9 @@ public class BooksSQL {
 			
 		}}.toString();
 		
+	
 	}
+	
 	
 	public String update_sql() {
 		
@@ -48,8 +50,14 @@ public class BooksSQL {
 			SET("b_year = #{b_year, jdbcType = VARCHAR}");
 			SET("b_iprice = #{b_iprice, jdbcType = VARCHAR}");
 
+			
 		}}.toString();
 		
+		
+		
+		
 	}
+	
+	
 
 }

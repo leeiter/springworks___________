@@ -7,8 +7,6 @@ import com.biz.rbooks.domain.MemberDTO;
 
 public interface MemberDao {
 	
-	/*
-	
 	@Select("SELECT COUNT(*) FROM tbl_member")
 	public int memberCount();
 	
@@ -18,7 +16,5 @@ public interface MemberDao {
 	@Insert("INSERT INTO tbl_member (m_id, m_password, m_login_date, m_rem) "
 			+ "VALUES(#{m_id}, #{m_password}, #{m_login_date, jdbcType=VARCHAR}, #{m_rem, jdbcType=VARCHAR})")
 	public int insert(MemberDTO mDTO);
-	
-	*/
 
 }

@@ -18,7 +18,7 @@ import org.springframework.web.bind.support.SessionStatus;
 
 import com.biz.memo.domain.MemoDTO;
 import com.biz.memo.domain.UserDTO;
-import com.biz.memo.service.MemoService;
+import com.biz.rbooks.remark.MemoService;
 
 import lombok.extern.slf4j.Slf4j;
 

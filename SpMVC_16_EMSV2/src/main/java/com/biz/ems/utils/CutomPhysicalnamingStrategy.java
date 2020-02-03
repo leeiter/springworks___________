@@ -51,8 +51,5 @@ public class CutomPhysicalnamingStrategy implements PhysicalNamingStrategy {
 		
 		return Identifier.toIdentifier(newName);	
 	}
-
-	
-	
 	
 }

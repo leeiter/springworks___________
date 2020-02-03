@@ -21,13 +21,11 @@ import com.biz.rbooks.service.BooksService;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @SessionAttributes({"bsDTO"})
+@Slf4j
 @RequestMapping(value = "/books")
 @Controller
 public class BooksController {
-	
-	/*
 	
 	@Autowired
 	BooksService bsService;
@@ -110,5 +108,5 @@ public class BooksController {
 		return ret + "";
 	}
 	
-	*/
+	
 }

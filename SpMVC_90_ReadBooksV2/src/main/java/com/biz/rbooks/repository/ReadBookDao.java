@@ -11,8 +11,6 @@ import com.biz.rbooks.domain.ReadBookDTO;
 
 public interface ReadBookDao {
 	
-	/*
-	
 	@Select("SELECT * FROM tbl_read_book")
 	public List<ReadBookDTO> selectAll();
 	
@@ -30,7 +28,5 @@ public interface ReadBookDao {
 	
 	@Delete("DELETE FROM tbl_read_book WHERE rb_seq = #{rb_seq}")
 	public int delete(long rb_seq);
-	
-	*/
 
 }

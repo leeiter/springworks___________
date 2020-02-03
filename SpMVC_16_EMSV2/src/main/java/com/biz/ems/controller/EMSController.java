@@ -104,12 +104,8 @@ public class EMSController {
 	
 	@RequestMapping(value = "/delete/{ems_seq}", method = RequestMethod.GET)
 	public String delete(@PathVariable("ems_seq") String ems_seq) {
-		
 		mailService.delete(Long.valueOf(ems_seq));
 		return "redirect:/ems/list";
-		
-		
 	}
-
 
 }

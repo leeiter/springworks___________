@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/*
+	tag.class 또는 tag#id 형식으로 selector를 지정하는 이유
+	특정한 tag 전체에 style을 입히지 않고
+	특정한 tag에 class나 id가 설정된 곳에만 style를 입히겠다라는 것
+*/
+table.main-list {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: 90%;
+	margin: 30px auto;
+}
+
+/*
+	table의 line(tr)에 한줄씩 건너뛰어 바탕색을 달리하여
+	데이터를 쉽게 볼 수 있게 하는 방식
+*/
+table.main-list tr:nth-child(even) {
+	border-bottom: 1px solid #ccc;
+}
+
+table.main-list tr:nth-child(odd) {
+	border-bottom: 1px solid #eee;
+}
+
+th {
+	border-bottom: 1px solid rgb(2, 122, 214); 
+	padding: 10px 0;
+	width: 16%;
+}
+
+td {
+	text-align: center;
+	padding: 10px 0;
+}
+
+button {
+	display: block;
+	background-color: rgb(2, 122, 214);
+	color: white;
+	font-size: 0.9rem;
+	border: none;
+	width: 140px;
+	margin: 0 auto;
+	padding: 10px 0;
+}
+
+button:hover {
+	background-color: black;
+	font-weight: bold;
+}

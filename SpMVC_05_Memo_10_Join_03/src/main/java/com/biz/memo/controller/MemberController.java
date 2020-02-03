@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.biz.memo.domain.UserDTO;
-import com.biz.memo.service.UserService;
+import com.biz.rbooks.remark.UserService;
 
 /*
  * Controller에서 객체(리스트)를 view로 보내는 방법
