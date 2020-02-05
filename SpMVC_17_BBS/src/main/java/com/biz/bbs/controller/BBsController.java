@@ -1,6 +1,7 @@
 package com.biz.bbs.controller;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -13,22 +14,30 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.biz.bbs.domain.BBsVO;
+import com.biz.bbs.domain.CommentVO;
 import com.biz.bbs.service.BBsService;
+import com.biz.bbs.service.CommentService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @SessionAttributes("bbsVO")
 @RequestMapping(value = "/bbs")
 @Controller
 public class BBsController {
 	
 	private final BBsService bService;
+	private final CommentService cmmService;
 
 	@Autowired
-	public BBsController(@Qualifier("bServiceV1") BBsService bService) {
+	public BBsController(@Qualifier("bServiceV1") BBsService bService, CommentService cmmService) {
 		super();
 		this.bService = bService;
+		this.cmmService = cmmService;
 	}
 	
 	@ModelAttribute("bbsVO")
@@ -66,9 +75,28 @@ public class BBsController {
 		return "redirect:/bbs/list";
 	}
 	
+	/*
+	 * view method에서 @ModelAttribute 를 사용한 이유
+	 * 게시판 상세페이지(view)에서 답글을 작성할 때
+	 * 본문만 작성하는 textArea box를 두고 나머지 항목들은
+	 * 별도로 저장하거나 하지 않아도
+	 * 답글을 저장했을 때 원글의 내용이 같이 controller로 전송되도록
+	 * 하기 위한 설정
+	 * 일종의 트릭
+	 * 
+	 * @ModelAttribute로 설정된 bbsVO는
+	 * sessionAttributes에 설정되어 있기 때문에
+	 * 
+	 * model.addAttribute로 만드는 순간 서버 session 메모리에 데이터가
+	 * 통째로 저장되어 있어서
+	 * 다른 method에서 그 값을 참조할 수 있다.
+	 */
 	@RequestMapping(value = "/view/{bbs_id}", method = RequestMethod.GET)
 	public String view(@PathVariable("bbs_id") long bbs_id, @ModelAttribute("bbsVO") BBsVO bbsVO, Model model) {
 		bbsVO = bService.findById(bbs_id);
+		
+//		bbsVO.setBbs_writer("");
+				
 		model.addAttribute("bbsVO", bbsVO);
 		model.addAttribute("BODY", "BBS_VIEW");
 		return "home";
@@ -76,8 +104,33 @@ public class BBsController {
 	
 	@RequestMapping(value = "/replay", method = RequestMethod.POST)
 	public String replay(@ModelAttribute("bbsVO") BBsVO bbsVO) {
+		LocalDateTime ldt = LocalDateTime.now();
+		DateTimeFormatter ld = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter lt = DateTimeFormatter.ofPattern("HH:mm:ss");
+		bbsVO.setBbs_date(ldt.format(ld));
+		bbsVO.setBbs_time(ldt.format(lt));
+		
 		bbsVO = bService.replay(bbsVO);
 		return "redirect:/bbs/list";
+	}
+	
+	@RequestMapping(value = "/cmt_write", method = RequestMethod.POST)
+	public String comment(CommentVO cmmVO, Model model) {
+		log.debug("커멘트 : " + cmmVO.toString());
+		int ret = cmmService.insert(cmmVO);
+		
+		List<CommentVO> cmmList = cmmService.selectAll(cmmVO.getCmt_p_id());
+		
+		model.addAttribute("CMT_LIST", cmmList);
+		return "include/bbs_comment";
+	}
+	
+	@RequestMapping(value = "/cmt_list", method = RequestMethod.POST)
+	public String cmm_list(String cmt_p_id, Model model) {
+		long p_id = Long.valueOf(cmt_p_id);
+		List<CommentVO> cmmList = cmmService.selectAll(p_id);
+		model.addAttribute("CMT_LIST", cmmList);
+		return "include/bbs_comment";
 	}
 
 }

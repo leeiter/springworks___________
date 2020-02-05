@@ -13,8 +13,6 @@ public interface BBsDao {
 	
 	public List<BBsVO> selectMain();
 	
-	
-
 	public void update(BBsVO bbsVO);
 
 	public void insert(BBsVO bbsVO);
