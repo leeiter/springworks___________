@@ -17,4 +17,6 @@ public interface NaverDao {
 	@Delete("DELETE FROM tbl_movie")
 	public void deleteAll();
 
+	public void insertAll(List<NaverMovieVO> naverList);
+
 }
