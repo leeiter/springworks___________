@@ -2,6 +2,45 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+<script>
+$(function() {
+
+	var contextCallBack = function(key, options) {
+	    
+	    if(key == 'edit') {
+	       let f_seq = $(this).attr("data-seq");
+	       document.location.href = "${rootPath}/update/" + f_seq
+	       alert("수정할 번호 : " + $(this).attr("data-seq"))
+	    }
+	       
+	    if(key == 'delete') {
+	       if(confirm("친구 정보를 삭제할까요?")) {
+	          let f_seq = $(this).attr("data-seq");
+	          document.location.href = "${rootPath}/delete/" + f_seq
+	          alert("삭제할 번호 : " + $(this).attr("data-seq"))
+	       }
+	    }
+
+	 }
+
+	 $.contextMenu({
+	    selector : '.list',
+	    callback : contextCallBack,
+	    items : {
+	       'edit' : {name : '수정', icon : 'edit'},
+	       'delete' : {name : '삭제', icon : 'delete'}
+	    }
+	 })
+	
+	 $("#btn-write").click(function() {
+		 document.location.href = "${rootPath}/input"
+	})
+	
+})
+
+
+</script>
+
 <div class="container">   
   <table class="table table-dark table-striped">
       <tr>

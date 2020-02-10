@@ -28,6 +28,8 @@ $(function() {
 </script>
 
 <form:form action="${rootPath}/save" modelAttribute="friendVO">
+	<form:input path="f_seq" type="hidden" />
+
 	<div class="form-group">
 		<form:input class="form-control" path="f_name" placeholder="이름" />
 	</div>
