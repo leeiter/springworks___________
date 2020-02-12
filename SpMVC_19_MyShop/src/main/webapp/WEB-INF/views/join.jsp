@@ -19,7 +19,7 @@
 	width: 400px;
 	padding:40px;
 	
-	background: #191919;
+	background: blue;
 	text-align: center;
 	z-index: 10;
 	
@@ -124,75 +124,58 @@
 
 <script>
 $(function() {
-	
-	$(".naver_login").click(function() {
-		document.location.href = "${rootPath}/member/naver"
-		
-	})
-	
+
 	$("#btn-join").click(function() {
-		document.location.href="${rootPath}/auth/join"
-		
-	})
-	
-	$("#btn-login").click(function() {
 		
 		// 유효성 검사
 		// id, password가 입력되지 않았을 때 경고
-		let u_id = $("#u_id").val()
-		if(u_id == "") {
+		let username = $("#username")
+		let password = $("#password")
+		let re_password = $("#re_password")
+		
+		if(username.val() == "") {
 			alert("아이디를 입력하세요")
-			$("#u_id").focus()
+			username.focus()
 			return false
 		}
-		/*
-		var params = $("form").serialize();
-		$.ajax({
 		
-			url : "${rootPath}/rest/member/login",
-			type: 'POST',
-			data : params,
-			success: function(result) {
-				document.location.href = document.location.href
-				alert(result)
-			}
-			
-			
-		})
-		*/
+		if(username.val() == "") {
+			alert("아이디를 입력하세요")
+			username.focus()
+			return false
+		}
 		
-		$.post("${rootPath}/rest/member/login",
-			$("form").serialize(),
-				function(result) {
-					alert(result)
-					document.location.href = document.location.href
-					// alert(result)
-				})
+		if(password.val() == "") {
+			alert("비밀번호를 입력하세요")
+			password.focus()
+			return false
+		}
+		
+		if(re_password.val() == "") {
+			alert("비밀번호 확인을 입력하세요")
+			re_password.focus()
+			return false
+		}
+		
+		if(password.val() != re_password.val()) {
+			alert("비밀번호와 비밀번호 확인이 다릅니다.")
+			password.focus()
+			return false
+		}
+		
+		$("form").submit()
+		
+		
 	})
-	
 })
 
 </script>
 
-<form:form method="POST" action="${rootPath}/login" class="login-form">
-	<h2>로그인</h2>
-	<c:if test="${param.error != null}">
-		<h3>아이디나 비밀번호가 잘못되었습니다.</h3>
-	</c:if>
-	<c:if test="${LOGIN_MSG == 'TRY'}">
-		<h3>로그인을 해야합니다.</h3>
-	</c:if>
-	<c:if test="${LOGIN_MSG == 'NO_AUTH'}">
-		<h3>작성자 만이 볼수 있음!!!</h3>
-	</c:if>
-	
-	<c:if test="${LOGIN_MSG == '0'}">
-		<h3>로그인을 환영합니다.</h3>
-	</c:if>
-	
-	<!-- spring form tag를 사용하면 생략 가능 -->
+<form:form method="POST" action="${rootPath}/auth/join" class="login-form">
+	<h2>회원가입</h2>
+
 	<input type="text" id="username" name="username" placeholder="사용자 ID">
 	<input type="password" id="password" name="password" placeholder="비밀번호">
-	<button type="submit" id="btn-login-s">로그인</button>
+	<input type="password" id="re_password" name="re_password" placeholder="비밀번호 한번 더">
 	<button type="button" id="btn-join">회원가입</button>
 </form:form>

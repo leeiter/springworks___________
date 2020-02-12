@@ -29,7 +29,7 @@ $(function() {
 		<li class="nav-item"><a class="nav-link" href="${rootPath}/">HOME</a></li>
 		
 		<sec:authorize access="isAnonymous()">
-			<li class="nav-item"><a class="nav-link" href="${rootPath}/login">로그인</a>
+			<li class="nav-item"><a class="nav-link" href="${rootPath}/auth/login">로그인</a>
 		</sec:authorize>
 		
 		<sec:authorize access="isAuthenticated()">

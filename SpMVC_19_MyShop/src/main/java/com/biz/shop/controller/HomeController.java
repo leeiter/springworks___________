@@ -1,4 +1,4 @@
-package com.biz.shop;
+package com.biz.shop.controller;
 
 import java.util.Locale;
 
